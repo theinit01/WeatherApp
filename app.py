@@ -38,11 +38,14 @@ def index():
                 city_name = city.name.capitalize()
                 temperature_fahrenheit = r['main']['temp']
                 temperature_celsius = round((temperature_fahrenheit - 32) * 5 / 9)
+                feelslike = r['main']['feels_like']
+                feelslike_celsius = round((feelslike - 32) * 5 / 9)
                 country_code = r['sys']['country']
 
                 weather = {
                     'city': f"{city_name}, {country_code}",
                     'temperature': temperature_celsius,
+		    'feels_like': feelslike_celsius,
                     'description': r['weather'][0]['description'],
                     'icon': r['weather'][0]['icon'],
                 }
